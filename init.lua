@@ -17,3 +17,19 @@ end
 
 require "lazy_setup"
 require "polish"
+require("telescope").setup {
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+      ".hg",
+      ".svn",
+      "__pycache__",
+      "__pypackages__",
+      "venv",
+      ".venv",
+      ".env",
+      "env",
+    },
+  },
+}
