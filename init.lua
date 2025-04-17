@@ -15,6 +15,8 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+pcall(require, "user")
+
 require "lazy_setup"
 require "polish"
 require("telescope").setup {
