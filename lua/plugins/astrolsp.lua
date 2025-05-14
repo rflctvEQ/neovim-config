@@ -39,7 +39,9 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
+      ts_ls = {
+        on_attach = function(client, bufnr) client.server_capabilities.documentFormattingProvider = false end,
+      },
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -73,6 +75,18 @@ return {
           desc = "Refresh codelens (buffer)",
           callback = function(args)
             if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh { bufnr = args.buf } end
+          end,
+        },
+      },
+      format_on_save = {
+        {
+          event = "BufWritePre",
+          pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+          desc = "Format with null-ls only",
+          callback = function()
+            vim.lsp.buf.format {
+              filter = function(client) return client.name == "null-ls" end,
+            }
           end,
         },
       },

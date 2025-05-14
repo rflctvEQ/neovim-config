@@ -9,8 +9,9 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "eslint",
+        -- "eslint_d",
         "ts_ls",
+        -- "tsserver",
         "jsonls",
         "cssls",
         "html",
@@ -25,6 +26,7 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        "eslint_d"
         -- add more arguments for adding more null-ls sources
       },
     },
